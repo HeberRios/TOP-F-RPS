@@ -6,6 +6,8 @@ const possibleChoices = ["rock", "paper", "scissors"];
 
 let playerChoice = "";
 let computerChoice = "";
+let playersScore = [0, 0];
+let roundCounter = 0;
 
 // FUNCTIONS ----------------------------------------------------------
 
@@ -31,20 +33,52 @@ function getComputerChoice() {
 
 function playRound(computerSelection, playerSelection) {
     if (playerSelection === "rock" && computerSelection === "scissors") {
-        return `You won!, ${playerSelection} beats ${computerSelection}`;
+        playersScore[1]++;
+        roundCounter++;
+        return `You won!, ${playerSelection} beats ${computerSelection}. (Player choice: ${playerSelection}, computer choice: ${computerSelection})`;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return `You won!, ${playerSelection} beats ${computerSelection}`;
+        playersScore[1]++;
+        roundCounter++;
+        return `You won!, ${playerSelection} beats ${computerSelection}. (Player choice: ${playerSelection}, computer choice: ${computerSelection})`;
     } else if (
         playerSelection === "scissors" &&
         computerSelection === "paper"
     ) {
-        return `You won!, ${playerSelection} beats ${computerSelection}`;
+        playersScore[1]++;
+        roundCounter++;
+        return `You won!, ${playerSelection} beats ${computerSelection}. (Player choice: ${playerSelection}, computer choice: ${computerSelection})`;
     } else if (playerSelection === computerSelection) {
+        roundCounter++;
         return `TIE!, both sides have the same choice. (Player choice: ${playerSelection}, computer choice: ${computerSelection})`;
     } else {
-        return `You loose!, ${computerSelection} beats ${playerSelection}`;
+        playersScore[0]++;
+        roundCounter++;
+        return `You loose!, ${computerSelection} beats ${playerSelection}. (Player choice: ${playerSelection}, computer choice: ${computerSelection})`;
     }
 }
 
-// Calling the playRPS function:
-// console.log(playRound(getComputerChoice(), getPlayerChoice()));
+function showScore() {
+    return `Player score: ${playersScore[1]}, computer score: ${playersScore[0]}`;
+}
+
+function gameResults() {
+    if (playersScore[1] > playersScore[0]) {
+        return `Game results:\nPlayer score: ${playersScore[1]}, computer score: ${playersScore[0]} \nTHE PLAYER WINS!!!!`;
+    } else if (playersScore[1] === playersScore[0]) {
+        return `Game results:\nPlayer score: ${playersScore[1]}, computer score: ${playersScore[0]} \nTIE!!!!`;
+    } else {
+        return `Game results:\nPlayer score: ${playersScore[1]}, computer score: ${playersScore[0]} \nTHE COMPUTER WINS!!!!`;
+    }
+}
+
+function game() {
+    while (roundCounter < 5) {
+        console.log(playRound(getComputerChoice(), getPlayerChoice()));
+        console.log(showScore());
+    }
+
+    return gameResults();
+}
+
+// Calling the game function:
+// console.log(game());
