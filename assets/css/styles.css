@@ -1,0 +1,75 @@
+/* CSS RESET ------------------------------------------------------------- */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS VARIABLES --------------------------------------------------------- */
+:root {
+    /* ## Colors */
+
+    /* ### Primary */
+    --rock-gradient: linear-gradient(
+        to top,
+        hsl(349, 71%, 52%),
+        hsl(349, 70%, 56%)
+    );
+    --paper-gradient: linear-gradient(
+        to top,
+        hsl(230, 89%, 62%),
+        hsl(230, 89%, 65%)
+    );
+    --scissors-gradient: linear-gradient(
+        to top,
+        hsl(39, 89%, 49%),
+        hsl(40, 84%, 53%)
+    );
+
+    /* ### Neutral */
+
+    --dark-text: hsl(229, 25%, 31%);
+    --score-text: hsl(229, 64%, 46%);
+    --header-outline: hsl(217, 16%, 45%);
+
+    /* ### Background */
+
+    --background-color: radial-gradient(
+        circle at center,
+        hsl(214, 47%, 23%),
+        hsl(237, 49%, 15%)
+    );
+}
+
+/* FONT FACES ------------------------------------------------------------ */
+/* barlow-semi-condensed-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Barlow Semi Condensed";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/barlow-semi-condensed-v15-latin-regular.woff2")
+        format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* barlow-semi-condensed-600 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Barlow Semi Condensed";
+    font-style: normal;
+    font-weight: 600;
+    src: url("../fonts/barlow-semi-condensed-v15-latin-600.woff2")
+        format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* barlow-semi-condensed-700 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Barlow Semi Condensed";
+    font-style: normal;
+    font-weight: 700;
+    src: url("../fonts/barlow-semi-condensed-v15-latin-700.woff2")
+        format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
