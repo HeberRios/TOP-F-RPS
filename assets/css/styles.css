@@ -15,6 +15,10 @@
     --rock-gradient: linear-gradient(to top, #dc2e4e, #dd405d);
     --paper-gradient: linear-gradient(to top, #4865f4, #5671f5);
     --scissors-gradient: linear-gradient(to top, #ec9e0e, #eca922);
+    --choice-container-border: #606e854b;
+    --outer-choice-container-rock-border: #a8243c;
+    --outer-choice-container-paper-border: #3348af;
+    --outer-choice-container-scissors-border: #99670a;
 
     /* ### Neutral */
 
@@ -122,6 +126,51 @@ header .container {
     font-size: 7.4rem;
     font-weight: 700;
     color: var(--dark-text);
+}
+
+/* GAME CHOICE SECTION --------------------------------------------------- */
+
+.game-choice-section .container {
+    display: flex;
+}
+
+.outer-choice-container {
+    width: 23rem;
+    height: 23rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.choice-container {
+    width: 18rem;
+    height: 18rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #fff;
+    border-top: 10px solid var(--choice-container-border);
+}
+
+.choice-container img {
+    width: 40%;
+}
+
+.rock-color {
+    background: var(--rock-gradient);
+    border-bottom: 10px solid var(--outer-choice-container-rock-border);
+}
+
+.paper-color {
+    background: var(--paper-gradient);
+    border-bottom: 10px solid var(--outer-choice-container-paper-border);
+}
+
+.scissors-color {
+    background: var(--scissors-gradient);
+    border-bottom: 10px solid var(--outer-choice-container-scissors-border);
 }
 
 /*
