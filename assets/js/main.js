@@ -1,6 +1,6 @@
 "use strict";
-
-// VARIABLES ----------------------------------------------------------
+// GAME LOGIC ------------------------------------------------------------
+// VARIABLES -------------------------------------------------------------
 
 const possibleChoices = ["rock", "paper", "scissors"];
 
@@ -9,7 +9,7 @@ let computerChoice = "";
 let playersScore = [0, 0];
 let roundCounter = 0;
 
-// FUNCTIONS ----------------------------------------------------------
+// FUNCTIONS -------------------------------------------------------------
 
 function getPlayerChoice() {
     playerChoice = prompt(
@@ -82,3 +82,36 @@ function game() {
 
 // Calling the game function:
 // console.log(game());
+
+// RULES MODAL WINDOW CODE -----------------------------------------------
+
+// SELECTING ELEMENTS ----------------------------------------------------
+
+const rulesBtn = document.getElementById("rules-btn");
+const modalWindow = document.getElementById("modal-window");
+const closeModalBtn = document.getElementById("close-modal");
+const overlay = document.getElementById("overlay");
+
+// FUNCTIONS -------------------------------------------------------------
+
+function openModal(e) {
+    modalWindow.classList.toggle("hidden");
+    overlay.classList.toggle("hidden");
+}
+
+function closeModal(e) {
+    modalWindow.classList.toggle("hidden");
+    overlay.classList.toggle("hidden");
+}
+
+// HANDLING EVENTS -------------------------------------------------------
+
+rulesBtn.addEventListener("click", openModal);
+closeModalBtn.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modalWindow.classList.contains("hidden")) {
+        closeModal();
+    }
+});

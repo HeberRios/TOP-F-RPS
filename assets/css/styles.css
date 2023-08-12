@@ -92,7 +92,7 @@ img {
 /* HEADER SECTION -------------------------------------------------------- */
 
 header {
-    padding: 4.8rem 6.4rem;
+    padding: 3.2rem 6.4rem;
 }
 
 header .container {
@@ -214,6 +214,7 @@ header .container {
     padding: 1rem 4rem;
     border: 2px solid #fff;
     border-radius: var(--base-border-radius);
+    cursor: pointer;
 }
 
 .rules-title {
