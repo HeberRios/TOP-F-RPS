@@ -92,7 +92,7 @@ img {
 /* HEADER SECTION -------------------------------------------------------- */
 
 header {
-    padding: 8rem 6.4rem;
+    padding: 4.8rem 6.4rem;
 }
 
 header .container {
@@ -130,8 +130,37 @@ header .container {
 
 /* GAME CHOICE SECTION --------------------------------------------------- */
 
+.game-choice-section {
+    padding: 3.2rem 0;
+}
+
+.game-choice-section .container::before {
+    position: absolute;
+    content: url("../images/bg-triangle.svg");
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* scale: 1.25; */
+    z-index: -1;
+}
+
 .game-choice-section .container {
+    position: relative;
     display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    padding: 0 6.4rem;
+}
+
+.top-choice-container {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+}
+
+.bottom-choice-container {
+    display: flex;
+    justify-content: center;
 }
 
 .outer-choice-container {
