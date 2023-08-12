@@ -12,35 +12,23 @@
     /* ## Colors */
 
     /* ### Primary */
-    --rock-gradient: linear-gradient(
-        to top,
-        hsl(349, 71%, 52%),
-        hsl(349, 70%, 56%)
-    );
-    --paper-gradient: linear-gradient(
-        to top,
-        hsl(230, 89%, 62%),
-        hsl(230, 89%, 65%)
-    );
-    --scissors-gradient: linear-gradient(
-        to top,
-        hsl(39, 89%, 49%),
-        hsl(40, 84%, 53%)
-    );
+    --rock-gradient: linear-gradient(to top, #dc2e4e, #dd405d);
+    --paper-gradient: linear-gradient(to top, #4865f4, #5671f5);
+    --scissors-gradient: linear-gradient(to top, #ec9e0e, #eca922);
 
     /* ### Neutral */
 
-    --dark-text: hsl(229, 25%, 31%);
-    --score-text: hsl(229, 64%, 46%);
-    --header-outline: hsl(217, 16%, 45%);
+    --dark-text: #3b4363;
+    --score-text: #2a46c0;
+    --header-outline: #606e85;
 
     /* ### Background */
 
-    --background-color: radial-gradient(
-        circle at center,
-        hsl(214, 47%, 23%),
-        hsl(237, 49%, 15%)
-    );
+    --background-color: radial-gradient(circle at top, #1f3756, #141539);
+
+    /* ## Border radius */
+
+    --base-border-radius: 1rem;
 }
 
 /* FONT FACES ------------------------------------------------------------ */
@@ -73,3 +61,73 @@
     src: url("../fonts/barlow-semi-condensed-v15-latin-700.woff2")
         format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+
+/* GENERAL STYLING ------------------------------------------------------- */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    height: 100vh;
+    font-family: "Barlow Semi Condensed";
+    color: #fff;
+    background: var(--background-color);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+/* HEADER SECTION -------------------------------------------------------- */
+
+header {
+    padding: 8rem 6.4rem;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3.2rem;
+    border: 3px solid var(--header-outline);
+    border-radius: var(--base-border-radius);
+}
+
+.score-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: var(--score-text);
+    background-color: #fff;
+    padding: 2rem 6.4rem;
+    padding-bottom: 1rem;
+    border-radius: var(--base-border-radius);
+}
+
+.score-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25rem;
+}
+
+.score-number {
+    font-size: 7.4rem;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+/*
+--SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+--FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
