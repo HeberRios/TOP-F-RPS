@@ -79,6 +79,12 @@ body {
     background: var(--background-color);
 }
 
+main {
+    height: 70.5%;
+    display: flex;
+    flex-direction: column;
+}
+
 img {
     max-width: 100%;
     display: block;
@@ -132,9 +138,13 @@ header .container {
 
 .game-choice-section {
     padding: 3.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
-.game-choice-section .container::before {
+.game-choices::before {
     position: absolute;
     content: url("../images/bg-triangle.svg");
     top: 50%;
@@ -144,7 +154,7 @@ header .container {
     z-index: -1;
 }
 
-.game-choice-section .container {
+.game-choices {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -170,6 +180,12 @@ header .container {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+}
+
+/* CHOICE CONTAINER HOVER STATE ------------------------------------------ */
+.outer-choice-container:hover {
+    scale: 1.05;
+    cursor: pointer;
 }
 
 .choice-container {
@@ -241,6 +257,93 @@ header .container {
     cursor: pointer;
 }
 
+/* CHOICE COMPARISON CONTAINER ------------------------------------------ */
+
+.choices-comparison {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* NEW CHOICE CIRCLES */
+
+.outer-choice {
+    width: 35rem;
+    height: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.choice {
+    width: 30rem;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #fff;
+    border-top: 10px solid var(--choice-container-border);
+}
+
+.choice img {
+    width: 40%;
+}
+
+/* PLAYER CHOICE CONTAINER */
+.player-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+}
+
+.player-choice-title {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 0.25rem;
+}
+
+/* COMPUTER CHOICE CONTAINER */
+.computer-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+}
+
+.computer-choice-title {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 0.25rem;
+}
+
+/* GAME RESULT CONTAINER */
+.game-result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.game-result-title {
+    font-size: 6rem;
+    font-weight: 700;
+}
+
+.play-again-btn {
+    color: #dc2e4e;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25rem;
+    padding: 2rem 7rem;
+    background-color: #fff;
+    border-radius: var(--base-border-radius);
+    cursor: pointer;
+}
+
 /* CLASSES TO MAKE MODAL WORK */
 
 .rules-modal {
@@ -272,9 +375,6 @@ header .container {
     z-index: 5;
 }
 
-.hidden {
-    display: none;
-}
 /*
 --SPACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
@@ -282,3 +382,8 @@ header .container {
 --FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
 */
+
+/* MOVING HIDDEN TO THE BOTTOM TO OVERRIDE OTHER DISPLAYS PROPERTIES */
+.hidden {
+    display: none;
+}

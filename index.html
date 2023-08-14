@@ -26,7 +26,7 @@
 
         <main>
             <section class="game-choice-section">
-                <div class="container">
+                <div class="game-choices container">
                     <div class="top-choice-container">
                         <div class="outer-choice-container paper-color">
                             <div class="choice-container paper">
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="outer-choice-container scissors-color">
-                            <div class="choice-container rock">
+                            <div class="choice-container scissors">
                                 <img
                                     src="assets/images/icon-scissors.svg"
                                     alt="rock icon"
@@ -59,6 +59,23 @@
                                 />
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="choices-comparison container hidden">
+                    <div class="player-choice">
+                        <p class="player-choice-title">YOU PICKED</p>
+                    </div>
+
+                    <div class="game-result-container">
+                        <p class="game-result-title">TIE!</p>
+                        <p id="play-again-btn" class="play-again-btn">
+                            PLAY AGAIN
+                        </p>
+                    </div>
+
+                    <div class="computer-choice">
+                        <p class="computer-choice-title">THE HOUSE PICKED</p>
                     </div>
                 </div>
             </section>

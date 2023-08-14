@@ -83,7 +83,7 @@ function game() {
 // Calling the game function:
 // console.log(game());
 
-// RULES MODAL WINDOW CODE -----------------------------------------------
+// RULES MODAL WINDOW ----------------------------------------------------
 
 // SELECTING ELEMENTS ----------------------------------------------------
 
@@ -114,4 +114,103 @@ document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && !modalWindow.classList.contains("hidden")) {
         closeModal();
     }
+});
+
+// COMPARING CHOICES -----------------------------------------------------
+
+// SELECTING ELEMENTS:
+const paperChoice = document.querySelector(".paper-color");
+const scissorsChoice = document.querySelector(".scissors-color");
+const rockChoice = document.querySelector(".rock-color");
+const choicesArray = [rockChoice, paperChoice, scissorsChoice];
+
+const gameChoicesContainer = document.querySelector(".game-choices");
+const choicesComparisonContainer = document.querySelector(".choices-comparison");
+
+const playerChoiceContainer = document.querySelector(".player-choice");
+const computerChoiceContainer = document.querySelector(".computer-choice");
+
+// FUNCTIONS -------------------------------------------------------------
+
+function changeToComparisonContainer() {
+    gameChoicesContainer.classList.toggle("hidden");
+    choicesComparisonContainer.classList.toggle("hidden");
+}
+
+function getImageSource(selectedImage) {
+    let imageSrc = "";
+    if (selectedImage === "rock-color") {
+        imageSrc = "assets/images/icon-rock.svg";
+        return imageSrc;
+    } else if (selectedImage === "paper-color") {
+        imageSrc = "assets/images/icon-paper.svg";
+        return imageSrc;
+    } else if (selectedImage === "scissors-color") {
+        imageSrc = "assets/images/icon-scissors.svg";
+        return imageSrc;
+    }
+}
+
+function createPlayerElement(colorClass) {
+    //CREATING THE NEW ELEMENTS
+    const newOuterChoiceCircle = document.createElement("div");
+    const newInnerChoiceCircle = document.createElement("div");
+    const newChoiceImg = document.createElement("img");
+
+    // ADDING CSS CLASSES
+    newOuterChoiceCircle.classList.add("outer-choice", colorClass);
+    newInnerChoiceCircle.classList.add("choice");
+
+    // ADDING SRC ATTRIBUTE TO THE NEW IMG
+    newChoiceImg.src = getImageSource(colorClass);
+
+    // APPENDING CHILD ELEMENTS
+    newInnerChoiceCircle.appendChild(newChoiceImg);
+    newOuterChoiceCircle.appendChild(newInnerChoiceCircle);
+    playerChoiceContainer.appendChild(newOuterChoiceCircle);
+}
+
+function getComputerColorClass(computerChoice) {
+    let colorClass = "";
+    if (computerChoice === "rock") {
+        colorClass = "rock-color";
+        return colorClass;
+    } else if (computerChoice === "paper") {
+        colorClass = "paper-color";
+        return colorClass;
+    } else if (computerChoice === "scissors") {
+        colorClass = "scissors-color";
+        return colorClass;
+    }
+}
+
+function createComputerElement(computerChoice) {
+    //CREATING THE NEW ELEMENTS
+    const newOuterChoiceCircle = document.createElement("div");
+    const newInnerChoiceCircle = document.createElement("div");
+    const newChoiceImg = document.createElement("img");
+
+    // GETTING THE COMPUTER COLOR CLASS
+    const colorClass = getComputerColorClass(computerChoice);
+
+    // ADDING CSS CLASSES
+    newOuterChoiceCircle.classList.add("outer-choice", colorClass);
+    newInnerChoiceCircle.classList.add("choice");
+
+    // ADDING SRC ATTRIBUTE TO THE NEW IMG
+    newChoiceImg.src = getImageSource(colorClass);
+
+    // APPENDING CHILD ELEMENTS
+    newInnerChoiceCircle.appendChild(newChoiceImg);
+    newOuterChoiceCircle.appendChild(newInnerChoiceCircle);
+    computerChoiceContainer.appendChild(newOuterChoiceCircle);
+}
+
+choicesArray.forEach((choice) => {
+    choice.addEventListener("click", function () {
+        const outerContainerColor = choice.classList[1];
+        changeToComparisonContainer();
+        createPlayerElement(outerContainerColor);
+        createComputerElement(getComputerChoice());
+    });
 });
