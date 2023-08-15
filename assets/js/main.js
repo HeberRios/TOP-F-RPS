@@ -125,7 +125,10 @@ const rockChoice = document.querySelector(".rock-color");
 const choicesArray = [rockChoice, paperChoice, scissorsChoice];
 
 const gameChoicesContainer = document.querySelector(".game-choices");
-const choicesComparisonContainer = document.querySelector(".choices-comparison");
+const choicesComparisonContainer = document.querySelector(
+    ".choices-comparison"
+);
+const gameResultText = document.querySelector(".game-result-title");
 
 const playerChoiceContainer = document.querySelector(".player-choice");
 const computerChoiceContainer = document.querySelector(".computer-choice");
@@ -152,7 +155,7 @@ function getImageSource(selectedImage) {
 }
 
 function createPlayerElement(colorClass) {
-    //CREATING THE NEW ELEMENTS
+    // CREATING THE NEW ELEMENTS
     const newOuterChoiceCircle = document.createElement("div");
     const newInnerChoiceCircle = document.createElement("div");
     const newChoiceImg = document.createElement("img");
@@ -168,6 +171,20 @@ function createPlayerElement(colorClass) {
     newInnerChoiceCircle.appendChild(newChoiceImg);
     newOuterChoiceCircle.appendChild(newInnerChoiceCircle);
     playerChoiceContainer.appendChild(newOuterChoiceCircle);
+}
+
+function getPlayerChoice(colorClass) {
+    let playerChoice = "";
+    if (colorClass === "rock-color") {
+        playerChoice = "rock";
+        return playerChoice;
+    } else if (colorClass === "paper-color") {
+        playerChoice = "paper";
+        return playerChoice;
+    } else if (colorClass === "scissors-color") {
+        playerChoice = "scissors";
+        return playerChoice;
+    }
 }
 
 function getComputerColorClass(computerChoice) {
@@ -206,11 +223,41 @@ function createComputerElement(computerChoice) {
     computerChoiceContainer.appendChild(newOuterChoiceCircle);
 }
 
+function selectionComparison(playerChoice, computerChoice) {
+    let roundResult = "";
+
+    if (playerChoice === "rock" && computerChoice === "scissors") {
+        roundResult = "YOU WIN!";
+        return roundResult;
+    } else if (playerChoice === "paper" && computerChoice === "rock") {
+        roundResult = "YOU WIN!";
+        return roundResult;
+    } else if (playerChoice === "scissors" && computerChoice === "paper") {
+        roundResult = "YOU WIN!";
+        return roundResult;
+    } else if (playerChoice === computerChoice) {
+        roundResult = "TIE!";
+        return roundResult;
+    } else {
+        roundResult = "YOU LOOSE!";
+        return roundResult;
+    }
+}
+
 choicesArray.forEach((choice) => {
     choice.addEventListener("click", function () {
         const outerContainerColor = choice.classList[1];
         changeToComparisonContainer();
         createPlayerElement(outerContainerColor);
-        createComputerElement(getComputerChoice());
+
+        const computerChoice = getComputerChoice();
+        createComputerElement(computerChoice);
+
+        // COMPARING CHOICES
+
+        gameResultText.textContent = selectionComparison(
+            getPlayerChoice(outerContainerColor),
+            computerChoice
+        );
     });
 });

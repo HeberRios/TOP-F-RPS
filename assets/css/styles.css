@@ -269,12 +269,13 @@ header .container {
 /* NEW CHOICE CIRCLES */
 
 .outer-choice {
-    width: 35rem;
-    height: 35rem;
+    width: 39rem;
+    height: 39rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    border-bottom-width: 15px;
 }
 
 .choice {
@@ -285,7 +286,7 @@ header .container {
     align-items: center;
     border-radius: 50%;
     background-color: #fff;
-    border-top: 10px solid var(--choice-container-border);
+    border-top: 15px solid var(--choice-container-border);
 }
 
 .choice img {
