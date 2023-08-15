@@ -118,6 +118,10 @@ document.addEventListener("keydown", function (e) {
 
 // COMPARING CHOICES -----------------------------------------------------
 
+// VARIABLES
+let gameScore = [0, 0];
+let roundNumber = 0;
+
 // SELECTING ELEMENTS:
 const paperChoice = document.querySelector(".paper-color");
 const scissorsChoice = document.querySelector(".scissors-color");
@@ -228,21 +232,106 @@ function selectionComparison(playerChoice, computerChoice) {
     let roundResult = "";
 
     if (playerChoice === "rock" && computerChoice === "scissors") {
-        roundResult = "YOU WIN!";
-        return roundResult;
+        gameScore[0]++;
+        roundNumber++;
+        if (roundNumber < 5) {
+            updateScore();
+            roundResult = "YOU WIN!";
+            return roundResult;
+        } else {
+            updateScore();
+            roundResult = getGameFinalResults();
+            resetGame();
+            console.log(
+                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
+            );
+            return roundResult;
+        }
     } else if (playerChoice === "paper" && computerChoice === "rock") {
-        roundResult = "YOU WIN!";
-        return roundResult;
+        gameScore[0]++;
+        roundNumber++;
+        if (roundNumber < 5) {
+            updateScore();
+            roundResult = "YOU WIN!";
+            return roundResult;
+        } else {
+            updateScore();
+            roundResult = getGameFinalResults();
+            resetGame();
+            console.log(
+                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
+            );
+            return roundResult;
+        }
     } else if (playerChoice === "scissors" && computerChoice === "paper") {
-        roundResult = "YOU WIN!";
-        return roundResult;
+        gameScore[0]++;
+        roundNumber++;
+        if (roundNumber < 5) {
+            updateScore();
+            roundResult = "YOU WIN!";
+            return roundResult;
+        } else {
+            updateScore();
+            roundResult = getGameFinalResults();
+            resetGame();
+            console.log(
+                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
+            );
+            return roundResult;
+        }
     } else if (playerChoice === computerChoice) {
-        roundResult = "TIE!";
-        return roundResult;
+        roundNumber++;
+        if (roundNumber < 5) {
+            updateScore();
+            roundResult = "TIE!";
+            return roundResult;
+        } else {
+            updateScore();
+            roundResult = getGameFinalResults();
+            resetGame();
+            console.log(
+                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
+            );
+            return roundResult;
+        }
     } else {
-        roundResult = "YOU LOOSE!";
-        return roundResult;
+        gameScore[1]++;
+        roundNumber++;
+        if (roundNumber < 5) {
+            updateScore();
+            roundResult = "YOU LOOSE!";
+            return roundResult;
+        } else {
+            updateScore();
+            roundResult = getGameFinalResults();
+            resetGame();
+            console.log(
+                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
+            );
+            return roundResult;
+        }
     }
+}
+
+function updateScore() {
+    console.log(
+        `Player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
+    );
+}
+
+function getGameFinalResults() {
+    if (gameScore[0] > gameScore[1]) {
+        return "YOU WON THE GAME!";
+    } else if (gameScore[1] > gameScore[0]) {
+        return "YOU LOST THE GAME!";
+    } else if (gameScore[0] === gameScore[1]) {
+        return "THE MATCH ENDS WITH A TIE!";
+    }
+}
+
+function resetGame() {
+    roundNumber = 0;
+    gameScore = [0, 0];
 }
 
 function changeToGameChoicesContainer() {
@@ -270,12 +359,10 @@ choicesArray.forEach((choice) => {
         createComputerElement(computerChoice);
 
         // COMPARING CHOICES
-
         gameResultText.textContent = selectionComparison(
             getPlayerChoice(outerContainerColor),
             computerChoice
         );
-
     });
 });
 
