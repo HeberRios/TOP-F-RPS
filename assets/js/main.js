@@ -129,6 +129,7 @@ const choicesComparisonContainer = document.querySelector(
     ".choices-comparison"
 );
 const gameResultText = document.querySelector(".game-result-title");
+const playAgainBtn = document.getElementById("play-again-btn");
 
 const playerChoiceContainer = document.querySelector(".player-choice");
 const computerChoiceContainer = document.querySelector(".computer-choice");
@@ -244,6 +245,21 @@ function selectionComparison(playerChoice, computerChoice) {
     }
 }
 
+function changeToGameChoicesContainer() {
+    gameChoicesContainer.classList.toggle("hidden");
+    choicesComparisonContainer.classList.toggle("hidden");
+}
+
+function deletePastRoundChoices() {
+    playerChoiceContainer.lastElementChild.remove();
+    computerChoiceContainer.lastElementChild.remove();
+}
+
+function playAgain() {
+    changeToGameChoicesContainer();
+    deletePastRoundChoices();
+}
+
 choicesArray.forEach((choice) => {
     choice.addEventListener("click", function () {
         const outerContainerColor = choice.classList[1];
@@ -259,5 +275,8 @@ choicesArray.forEach((choice) => {
             getPlayerChoice(outerContainerColor),
             computerChoice
         );
+
     });
 });
+
+playAgainBtn.addEventListener("click", playAgain);
