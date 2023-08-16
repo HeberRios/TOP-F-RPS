@@ -138,6 +138,9 @@ const playAgainBtn = document.getElementById("play-again-btn");
 const playerChoiceContainer = document.querySelector(".player-choice");
 const computerChoiceContainer = document.querySelector(".computer-choice");
 
+const playerScore = document.getElementById("player-score");
+const computerScore = document.getElementById("computer-score");
+
 // FUNCTIONS -------------------------------------------------------------
 
 function changeToComparisonContainer() {
@@ -314,9 +317,8 @@ function selectionComparison(playerChoice, computerChoice) {
 }
 
 function updateScore() {
-    console.log(
-        `Player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
-    );
+    playerScore.textContent = gameScore[0];
+    computerScore.textContent = gameScore[1];
 }
 
 function getGameFinalResults() {
