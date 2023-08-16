@@ -231,89 +231,61 @@ function createComputerElement(computerChoice) {
     computerChoiceContainer.appendChild(newOuterChoiceCircle);
 }
 
-function selectionComparison(playerChoice, computerChoice) {
+function selectionComparisonResult(playerChoice, computerChoice) {
     let roundResult = "";
 
     if (playerChoice === "rock" && computerChoice === "scissors") {
-        gameScore[0]++;
-        roundNumber++;
+        addPointToPlayer();
         if (roundNumber < 5) {
-            updateScore();
             roundResult = "YOU WIN!";
-            return roundResult;
         } else {
-            updateScore();
             roundResult = getGameFinalResults();
-            resetGame();
-            console.log(
-                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
-            );
-            return roundResult;
         }
+        return roundResult;
     } else if (playerChoice === "paper" && computerChoice === "rock") {
-        gameScore[0]++;
-        roundNumber++;
+        addPointToPlayer();
         if (roundNumber < 5) {
-            updateScore();
             roundResult = "YOU WIN!";
-            return roundResult;
         } else {
-            updateScore();
             roundResult = getGameFinalResults();
-            resetGame();
-            console.log(
-                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
-            );
-            return roundResult;
         }
+        return roundResult;
     } else if (playerChoice === "scissors" && computerChoice === "paper") {
-        gameScore[0]++;
-        roundNumber++;
+        addPointToPlayer();
         if (roundNumber < 5) {
-            updateScore();
             roundResult = "YOU WIN!";
-            return roundResult;
         } else {
-            updateScore();
             roundResult = getGameFinalResults();
-            resetGame();
-            console.log(
-                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
-            );
-            return roundResult;
         }
+        return roundResult;
     } else if (playerChoice === computerChoice) {
-        roundNumber++;
         if (roundNumber < 5) {
-            updateScore();
             roundResult = "TIE!";
-            return roundResult;
         } else {
-            updateScore();
             roundResult = getGameFinalResults();
-            resetGame();
-            console.log(
-                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
-            );
-            return roundResult;
         }
+        return roundResult;
     } else {
-        gameScore[1]++;
-        roundNumber++;
+        addPointToComputer();
         if (roundNumber < 5) {
-            updateScore();
-            roundResult = "YOU LOOSE!";
-            return roundResult;
+            roundResult = "YOU LOSE!";
         } else {
-            updateScore();
             roundResult = getGameFinalResults();
-            resetGame();
-            console.log(
-                `player score: ${gameScore[0]}, computer score: ${gameScore[1]}`
-            );
-            return roundResult;
         }
+        return roundResult;
     }
+}
+
+function addPointToPlayer() {
+    gameScore[0]++;
+}
+
+function addPointToComputer() {
+    gameScore[1]++;
+}
+
+function roundNumberIncrement() {
+    roundNumber++;
 }
 
 function updateScore() {
@@ -347,24 +319,38 @@ function deletePastRoundChoices() {
 }
 
 function playAgain() {
-    changeToGameChoicesContainer();
-    deletePastRoundChoices();
+    if (roundNumber < 5) {
+        changeToGameChoicesContainer();
+        deletePastRoundChoices();
+    } else {
+        changeToGameChoicesContainer();
+        deletePastRoundChoices();
+        resetGame();
+        updateScore();
+    }
 }
 
 choicesArray.forEach((choice) => {
     choice.addEventListener("click", function () {
+        // CREATING THE PLAYER ELEMENT
         const outerContainerColor = choice.classList[1];
         changeToComparisonContainer();
         createPlayerElement(outerContainerColor);
 
+        // CREATING COMPUTER ELEMENT
         const computerChoice = getComputerChoice();
         createComputerElement(computerChoice);
 
+        // INCREMENTING THE ROUND COUNTER
+        roundNumberIncrement();
+
         // COMPARING CHOICES
-        gameResultText.textContent = selectionComparison(
+        gameResultText.textContent = selectionComparisonResult(
             getPlayerChoice(outerContainerColor),
             computerChoice
         );
+        
+        updateScore();
     });
 });
 

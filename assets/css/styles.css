@@ -350,6 +350,7 @@ header .container {
 .game-result-title {
     font-size: 6rem;
     font-weight: 700;
+    text-align: center;
 }
 
 .play-again-btn {
