@@ -132,6 +132,8 @@ const gameChoicesContainer = document.querySelector(".game-choices");
 const choicesComparisonContainer = document.querySelector(
     ".choices-comparison"
 );
+
+const gameResultContainer = document.querySelector(".game-result-container");
 const gameResultText = document.querySelector(".game-result-title");
 const playAgainBtn = document.getElementById("play-again-btn");
 
@@ -322,35 +324,70 @@ function playAgain() {
     if (roundNumber < 5) {
         changeToGameChoicesContainer();
         deletePastRoundChoices();
+        toggleGameResultText();
     } else {
         changeToGameChoicesContainer();
         deletePastRoundChoices();
+        toggleGameResultText();
         resetGame();
         updateScore();
     }
 }
 
+function toggleGameResultText() {
+    gameResultContainer.classList.toggle("hidden");
+}
+
+function createPlaceholderElement() {
+    const placeholderOuterElement = document.createElement("div");
+    const placeholderInnerElement = document.createElement("div");
+
+    placeholderOuterElement.classList.add("placeholder-container");
+    placeholderInnerElement.classList.add("placeholder");
+
+    placeholderOuterElement.appendChild(placeholderInnerElement);
+    computerChoiceContainer.appendChild(placeholderOuterElement);
+}
+
+function removePlaceHolder() {
+    computerChoiceContainer.lastElementChild.remove();
+}
+
+function displayComputerChoice(computerChoice) {
+    removePlaceHolder();
+    createComputerElement(computerChoice);
+}
+
+function displayResults(outerContainerColor) {
+    roundNumberIncrement();
+    toggleGameResultText();
+    gameResultText.textContent = selectionComparisonResult(
+        getPlayerChoice(outerContainerColor),
+        computerChoice
+    );
+    updateScore();
+}
+
+// ADDING EVENT LISTENERS ------------------------------------------------
+
 choicesArray.forEach((choice) => {
     choice.addEventListener("click", function () {
         // CREATING THE PLAYER ELEMENT
         const outerContainerColor = choice.classList[1];
-        changeToComparisonContainer();
         createPlayerElement(outerContainerColor);
+
+        // CHANGING TO COMPARISON CONTAINER
+        changeToComparisonContainer();
+
+        // CREATING PLACEHOLDER ELEMENT
+        createPlaceholderElement();
 
         // CREATING COMPUTER ELEMENT
         const computerChoice = getComputerChoice();
-        createComputerElement(computerChoice);
+        setTimeout(displayComputerChoice, 2000, computerChoice);
 
-        // INCREMENTING THE ROUND COUNTER
-        roundNumberIncrement();
-
-        // COMPARING CHOICES
-        gameResultText.textContent = selectionComparisonResult(
-            getPlayerChoice(outerContainerColor),
-            computerChoice
-        );
-        
-        updateScore();
+        // DISPLAYING ROUND/GAME RESULTS
+        setTimeout(displayResults, 3000, outerContainerColor);
     });
 });
 
