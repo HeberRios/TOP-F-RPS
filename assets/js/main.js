@@ -358,6 +358,18 @@ function displayComputerChoice(computerChoice) {
     createComputerElement(computerChoice);
 }
 
+function toggleBoxshadow() {
+    if (gameResultText.textContent === "YOU WON THE GAME!") {
+        playerChoiceContainer.lastElementChild.classList.toggle(
+            "winner-shadow"
+        );
+    } else if (gameResultText.textContent === "YOU LOST THE GAME!") {
+        computerChoiceContainer.lastElementChild.classList.toggle(
+            "winner-shadow"
+        );
+    }
+}
+
 function displayResults(outerContainerColor) {
     roundNumberIncrement();
     toggleGameResultText();
@@ -365,6 +377,7 @@ function displayResults(outerContainerColor) {
         getPlayerChoice(outerContainerColor),
         computerChoice
     );
+    toggleBoxshadow();
     updateScore();
 }
 
