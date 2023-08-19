@@ -79,13 +79,15 @@ html {
 
 body {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     font-family: "Barlow Semi Condensed";
     color: #fff;
     background: var(--background-color);
 }
 
 main {
-    height: 70.5%;
     display: flex;
     flex-direction: column;
 }
@@ -110,8 +112,8 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 3.2rem;
-    border: 3px solid var(--header-outline);
+    padding: 2rem;
+    border: 0.3rem solid var(--header-outline);
     border-radius: var(--base-border-radius);
 }
 
@@ -123,7 +125,7 @@ header .container {
     gap: 2rem;
     color: var(--score-text);
     background-color: #fff;
-    padding: 2rem 3.2rem;
+    padding: 1rem 3.2rem;
     padding-bottom: 1rem;
     border-radius: var(--base-border-radius);
 }
@@ -135,7 +137,7 @@ header .container {
 }
 
 .score-number {
-    font-size: 7.4rem;
+    font-size: 6.2rem;
     font-weight: 700;
     color: var(--dark-text);
 }
@@ -165,7 +167,6 @@ header .container {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
 }
 
 .game-choices::before {
@@ -174,7 +175,6 @@ header .container {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* scale: 1.25; */
     z-index: -1;
 }
 
@@ -198,29 +198,30 @@ header .container {
 }
 
 .outer-choice-container {
-    width: 23rem;
-    height: 23rem;
+    width: 20rem;
+    height: 20rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    transition: all 0.3s;
 }
 
 /* CHOICE CONTAINER HOVER STATE ------------------------------------------ */
 .outer-choice-container:hover {
-    scale: 1.05;
+    scale: 1.075;
     cursor: pointer;
 }
 
 .choice-container {
-    width: 18rem;
-    height: 18rem;
+    width: 15rem;
+    height: 15rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     background-color: #fff;
-    border-top: 10px solid var(--choice-container-border);
+    border-top: 1rem solid var(--choice-container-border);
 }
 
 .choice-container img {
@@ -229,17 +230,17 @@ header .container {
 
 .rock-color {
     background: var(--rock-gradient);
-    border-bottom: 10px solid var(--outer-choice-container-rock-border);
+    border-bottom: 1rem solid var(--outer-choice-container-rock-border);
 }
 
 .paper-color {
     background: var(--paper-gradient);
-    border-bottom: 10px solid var(--outer-choice-container-paper-border);
+    border-bottom: 1rem solid var(--outer-choice-container-paper-border);
 }
 
 .scissors-color {
     background: var(--scissors-gradient);
-    border-bottom: 10px solid var(--outer-choice-container-scissors-border);
+    border-bottom: 1rem solid var(--outer-choice-container-scissors-border);
 }
 
 /* RULES SECTION --------------------------------------------------------- */
@@ -247,12 +248,13 @@ header .container {
 .rules-section {
     display: flex;
     justify-content: flex-end;
-    padding: 3.2rem 6.4rem;
+    padding: 2.4rem 6.4rem;
+    padding-top: 0;
 }
 
 .rules {
     padding: 1rem 4rem;
-    border: 2px solid #fff;
+    border: 0.2rem solid #fff;
     border-radius: var(--base-border-radius);
     cursor: pointer;
 }
@@ -294,24 +296,24 @@ header .container {
 /* NEW CHOICE CIRCLES */
 
 .outer-choice {
-    width: 39rem;
-    height: 39rem;
+    width: 35rem;
+    height: 35rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    border-bottom-width: 15px;
+    border-bottom-width: 1.2rem;
 }
 
 .choice {
-    width: 30rem;
-    height: 30rem;
+    width: 26rem;
+    height: 26rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     background-color: #fff;
-    border-top: 15px solid var(--choice-container-border);
+    border-top: 1.2rem solid var(--choice-container-border);
 }
 
 .choice img {
@@ -355,7 +357,7 @@ header .container {
 }
 
 .game-result-title {
-    font-size: 6rem;
+    font-size: 5.2rem;
     font-weight: 700;
     text-align: center;
 }
@@ -366,35 +368,41 @@ header .container {
     font-weight: 600;
     letter-spacing: 0.25rem;
     padding: 2rem 7rem;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: var(--base-border-radius);
     cursor: pointer;
+    transition: all 0.3s;
+}
+
+.play-again-btn:hover {
+    scale: 1.05;
 }
 
 /* PLACEHOLDER ELEMENT STYLES */
 
 .placeholder-container {
-    width: 39rem;
-    height: 39rem;
+    width: 35rem;
+    height: 35rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    border-bottom: 15px solid #00000000;
+    border-bottom: 1.2rem solid #00000000;
 }
 
 .placeholder {
-    width: 30rem;
-    height: 30rem;
+    width: 26rem;
+    height: 26rem;
     border-radius: 50%;
     background-color: #1a1d2249;
-    border-top: 15px solid #00000000;
+    border-top: 1.2rem solid #00000000;
 }
 
 /* WINNER SHADOW STYLE */
 .winner-shadow {
     box-shadow: 0 0 0 6rem var(--first-shadow), 0 0 0 12rem var(--second-shadow),
         0 0 0 18rem var(--third-shadow);
+        z-index: -1;
 }
 
 /* CLASSES TO MAKE MODAL WORK */
@@ -412,7 +420,7 @@ header .container {
 
     background-color: white;
     padding: 4.8rem;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 10;
 }
@@ -424,7 +432,7 @@ header .container {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(0.3rem);
     z-index: 5;
 }
 
